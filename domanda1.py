@@ -1,16 +1,20 @@
 import pandas as pd
+from collections import Counter
 
-# Load your dataset
-df = pd.read_csv('food-inspection.csv')  # Adjust file path/format as needed
+# Load your inspection data (adjust file path and format as needed)
+df = pd.read_csv('./archivio/food-inspections.csv')
 
-# Check the columns available
-print(df.columns)
-print(df.head())
+# Example with sample data structure
+# Assuming your data has a 'facility_type' column
+df = pd.read_csv('./archivio/food-inspections.csv')
 
-# Count activity types and find the most common
-activity_counts = df['activity_type'].value_counts()  # Adjust column name as needed
-print(activity_counts)
+# Count inspections by facility type
+inspection_counts = df['Facility Type'].value_counts()
 
-# Get the most checked activity
-most_checked = activity_counts.idxmax()
-print(f"Most checked activity: {most_checked}")
+# Print results
+print(inspection_counts)
+
+# Or if using a list/dictionary:
+#most_common = Counter(establishment_types).most_common(10)
+# for est_type, count in most_common:
+#     print(f"{est_type}: {count} inspections")
